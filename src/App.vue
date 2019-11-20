@@ -41,6 +41,10 @@
         </mat-container>
       </mat-container>
     </mat-container>
+    <clock
+      v-if="signedIn"
+      :user="user"
+    />
   </div>
 </template>
 
@@ -48,9 +52,13 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Auth, Hub } from 'aws-amplify';
 import AuthMenu from '@/components/AuthMenu.vue';
+import Clock from '@/components/Clock.vue';
 
 @Component({
-  components: { AuthMenu },
+  components: {
+    AuthMenu,
+    Clock,
+  },
 })
 export default class App extends Vue {
   sidebar = false;
