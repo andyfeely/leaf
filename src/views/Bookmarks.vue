@@ -179,6 +179,7 @@ export default class Bookmarks extends Vue {
           id: bookmark.id,
         },
       },
+      // @ts-ignore
       update: (store, { data: { deleteBookmark: deleted } }) => {
         // Read the data from our cache for this query.
         const data: any = store.readQuery({
