@@ -4,7 +4,6 @@
   >
     <img
       :src="getFavicon"
-      alt="Logo"
       :style="{ flex: 0 }"
     >
     <a
@@ -68,9 +67,9 @@ export default class Bookmark extends Vue {
     } catch (e) {
       return `https://s2.googleusercontent.com/s2/favicons?domain_url=${this.bookmark.url}`;
     }
-    const { protocol } = url;
+    const { protocol, port } = url;
     const domain = url.hostname;
-    return `${protocol}//${domain}/favicon.ico`;
+    return `${protocol}//${domain}${port ? `:${port}` : ''}/favicon.ico`;
   }
 
   onDeleteFinished() {

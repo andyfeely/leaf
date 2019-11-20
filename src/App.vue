@@ -7,9 +7,8 @@
       size="lg"
     >
       <mat-nav-link @click="() => sidebar = !sidebar">
-        <mat-logo>
-          Leaf
-        </mat-logo>
+        <i class="fas logo fa-leaf"></i>
+        Leaf
       </mat-nav-link>
       <mat-nav-link>
         <auth-menu
@@ -101,6 +100,9 @@ export default class App extends Vue {
     a {
       color: inherit;
       text-decoration: none;
+    }
+    .logo.fa-leaf {
+      margin-right: 15px;
     }
   }
 </style>
