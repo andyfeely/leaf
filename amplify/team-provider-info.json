@@ -1,0 +1,21 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-leaf-prod-212302-authRole",
+            "UnauthRoleArn": "arn:aws:iam::014612444693:role/amplify-leaf-prod-212302-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::014612444693:role/amplify-leaf-prod-212302-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-leaf-prod-212302-deployment",
+            "UnauthRoleName": "amplify-leaf-prod-212302-unauthRole",
+            "StackName": "amplify-leaf-prod-212302",
+            "StackId": "arn:aws:cloudformation:eu-west-1:014612444693:stack/amplify-leaf-prod-212302/f045efc0-0bdb-11ea-86d0-0ae0d664c880"
+        },
+        "categories": {
+            "auth": {
+                "leaf20c36051": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"432845841786-tufsd8arcpao7vvi1skih8brljnvf0ia.apps.googleusercontent.com\",\"client_secret\":\"F-vdMM3IItwrf6AOAsXu_NCW\"}]"
+                }
+            }
+        }
+    }
+}

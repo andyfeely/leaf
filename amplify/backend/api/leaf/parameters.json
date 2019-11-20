@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "leaf",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authleaf20c36051",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
