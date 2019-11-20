@@ -8,11 +8,13 @@
     >
       <mat-nav-link @click="() => sidebar = !sidebar">
         <mat-logo>
-          Bookmarks
+          Leaf
         </mat-logo>
       </mat-nav-link>
       <mat-nav-link>
-        <auth-menu/>
+        <auth-menu
+          v-if="signedIn"
+        />
       </mat-nav-link>
     </mat-toolbar>
     <mat-container
@@ -45,6 +47,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { Auth, Hub } from 'aws-amplify';
 import AuthMenu from '@/components/AuthMenu.vue';
 
 @Component({
@@ -52,6 +55,33 @@ import AuthMenu from '@/components/AuthMenu.vue';
 })
 export default class App extends Vue {
   sidebar = false;
+
+  signedIn = false;
+
+  user = null;
+
+  async created() {
+    Auth.currentAuthenticatedUser()
+      .then((data) => {
+        this.user = data.attributes;
+        this.signedIn = true;
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+          this.signedIn = true;
+          this.$router.push('/');
+          break;
+        case 'signOut':
+          this.signedIn = false;
+          break;
+        default:
+      }
+    });
+  }
 }
 </script>
 
@@ -65,7 +95,7 @@ export default class App extends Vue {
     height: 100%;
     display: grid;
     grid-template-rows: 75px 1fr;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Rubik', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     a {

@@ -133,6 +133,9 @@ export default class Bookmarks extends Vue {
             return previousResult;
           },
         });
+      })
+      .catch((e) => {
+        console.log(e);
       });
   }
 

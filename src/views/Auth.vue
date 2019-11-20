@@ -4,27 +4,6 @@
       Sign in
     </mat-button>
     <mat-button v-else @click="signOut">ELSE</mat-button>
-    <img :src="picture" alt="">
-<!--    <mat-button-->
-<!--      v-if="username"-->
-<!--      @click="() => menu = true">-->
-<!--      <mat-flex-layout>-->
-<!--        <mat-avatar :src="picture" size="xs" />-->
-<!--        <mat-spacer />-->
-<!--        {{ username }}-->
-<!--      </mat-flex-layout>-->
-<!--    </mat-button>-->
-<!--    <mat-menu-->
-<!--      position="bottom-right"-->
-<!--      @close="() => menu = !menu"-->
-<!--      v-model="menu">-->
-<!--      <mat-list>-->
-<!--        <mat-list-item @click="signOut">-->
-<!--          <mat-fa space="right" icon="sign-out-alt"></mat-fa>-->
-<!--          Sign out-->
-<!--        </mat-list-item>-->
-<!--      </mat-list>-->
-<!--    </mat-menu>-->
   </div>
 </template>
 
@@ -42,27 +21,7 @@ import { components } from 'aws-amplify-vue';
 export default class AuthComponent extends Vue {
     loggedIn = false;
 
-    username: string = '';
-
-    picture: string = '';
-
-    showLogin: boolean = false;
-
     menu: boolean = false;
-
-    async created() {
-      Hub.listen('auth', ({ payload: { event, data } }) => {
-        switch (event) {
-          case 'signIn':
-            this.$router.push('/');
-            break;
-          case 'signOut':
-            this.username = '';
-            break;
-          default:
-        }
-      });
-    }
 
     signOut() {
       Auth.signOut();
