@@ -9,7 +9,7 @@
     "latest": "npm i -S @materiajs/vue-materia"
   },
   "dependencies": {
-    "@materiajs/vue-materia": "^0.1.29",
+    "@materiajs/vue-materia": "^0.1.30",
     "aws-amplify": "^1.2.4",
     "aws-amplify-vue": "^0.3.3",
     "aws-appsync": "^3.0.2",

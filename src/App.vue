@@ -17,24 +17,29 @@
       </mat-nav-link>
     </mat-toolbar>
     <mat-container
+      color="blue-grey-1"
+      gradient="blue-grey-2"
       height="100%"
       width="100%"
       display="flex">
       <mat-expansion v-model="sidebar">
         <mat-container
-          color="support-4"
           width="300px"
           height="100%"
         >
-          <router-link to="/">Bookmarks</router-link> |
-          <router-link to="/about">About</router-link>
+          <mat-list>
+            <mat-list-item>
+              Bookmarks
+            </mat-list-item>
+            <mat-list-item>
+              Notes
+            </mat-list-item>
+          </mat-list>
         </mat-container>
       </mat-expansion>
       <mat-container
         height="100%"
         width="100%"
-        color="blue-grey-1"
-        gradient="blue-grey-2"
       >
         <mat-container max-width="720px">
           <router-view/>
