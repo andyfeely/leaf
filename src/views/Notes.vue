@@ -48,6 +48,7 @@
       <mat-container
         padding="15px 30px"
         :min-width="editWidth"
+        margin="0 auto"
       >
         <edit-note
           @saveNote="saveNote"

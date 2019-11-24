@@ -3,46 +3,52 @@
     class="edit-note"
     :style="style"
   >
-    <mat-card
-      padding="15px"
-      round="2"
-      :color="editingNote.color || '#ffffff'"
-      :gradient="editingNote.gradient"
+    <mat-container
+      margin="0 auto"
+      height="100%"
     >
-      <div class="edit-note-inner">
-        <div>
-          <mat-input
-            v-model="editingNote.title"
-            placeholder="Title"
-          />
-          <br>
-          <mat-container display="flex">
-            <mat-color-select
-              v-model="editingNote.color"
-            ></mat-color-select>
-            <mat-color-select
-              v-model="editingNote.gradient"
-            ></mat-color-select>
-          </mat-container>
+      <mat-card
+        padding="15px"
+        round="2"
+        :color="editingNote.color || '#ffffff'"
+        :gradient="editingNote.gradient"
+        height="calc(100% - 30px)"
+      >
+        <div class="edit-note-inner">
+          <div>
+            <mat-input
+              v-model="editingNote.title"
+              placeholder="Title"
+            />
+            <br>
+            <mat-container display="flex">
+              <mat-color-select
+                v-model="editingNote.color"
+              ></mat-color-select>
+              <mat-color-select
+                v-model="editingNote.gradient"
+              ></mat-color-select>
+            </mat-container>
+          </div>
+          <ckeditor :editor="editor" v-model="editingNote.body" :config="editorConfig"></ckeditor>
+          <div>
+            <mat-button
+              color="primary-5"
+              @click="save"
+              space="right"
+            >
+              Save
+            </mat-button>
+            <mat-button
+              color="blue-grey-5"
+              @click="$emit('cancel')"
+            >
+              Cancel
+            </mat-button>
+          </div>
         </div>
-        <ckeditor :editor="editor" v-model="editingNote.body" :config="editorConfig"></ckeditor>
-        <div>
-          <mat-button
-            color="primary-5"
-            @click="save"
-            space="right"
-          >
-            Save
-          </mat-button>
-          <mat-button
-            color="blue-grey-5"
-            @click="$emit('cancel')"
-          >
-            Cancel
-          </mat-button>
-        </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </mat-container>
   </div>
 </template>
 
@@ -137,7 +143,7 @@ export default class EditNote extends Vue {
       display: flex;
       flex-direction: column;
       height: 100%;
-      width: 700px;
+      width: 100%;
       &__main {
         flex: 1;
       }
