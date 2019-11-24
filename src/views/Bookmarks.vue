@@ -16,18 +16,26 @@
         </mat-container>
       </mat-card>
     </mat-modal>
-    <mat-container padding="15px">
-      <div class="actions">
-        <mat-input
-          v-model="searchString"
-          placeholder="Search"
-        />
+    <mat-container
+      max-width="700px"
+      margin="auto">
+      <mat-toolbar>
+        <h4>
+          Bookmarks
+        </h4>
         <mat-button
           @click="showCreate = true"
           color="light-blue-2"
         >
           New
         </mat-button>
+      </mat-toolbar>
+      <div class="actions">
+        <mat-input
+          v-model="searchString"
+          placeholder="Search bookmarks"
+        />
+
       </div>
       <br>
       <mat-list>
@@ -288,13 +296,6 @@ export default class Bookmarks extends Vue {
         height: 1px;
         background: #ffffff22;
         margin: 0 15px;
-      }
-    }
-    .actions {
-      display: flex;
-      :first-child {
-        flex: 1;
-        margin-right: 15px;
       }
     }
   }

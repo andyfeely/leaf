@@ -1,28 +1,26 @@
 <template>
   <mat-container height="100%" display="flex">
     <mat-container
-      min-width="50%"
-      flex="1"
-      padding="15px">
+      flex="1">
       <mat-container
         max-width="700px"
         margin="auto"
       >
-        <mat-container
-          display="flex">
-          <mat-container flex="1">
-            <mat-input
-              v-model="searchString"
-              placeholder="Search"
-            />
-          </mat-container>
+        <mat-toolbar>
+          <h4>
+            Notes
+          </h4>
           <mat-button
             @click="onClickNew"
             color="light-blue-2"
           >
             New
           </mat-button>
-        </mat-container>
+        </mat-toolbar>
+        <mat-input
+          v-model="searchString"
+          placeholder="Search notes"
+        />
         <br>
         <div
           class="notes mat-scrollbar-hidden"
@@ -153,7 +151,7 @@ export default class Notes extends Vue {
   // @ts-ignore
   // eslint-disable-next-line
   get editWidth() {
-    return `${window.innerWidth / 3}px`;
+    return `${window.innerWidth / 2}px`;
   }
 
   get notes(): UpdateNoteInput[] {
@@ -233,7 +231,7 @@ export default class Notes extends Vue {
           const items: any = this.$refs[ref];
           items[0].$el.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
         });
-      }, 400);
+      }, 500);
     });
   }
 
@@ -276,7 +274,7 @@ export default class Notes extends Vue {
 
 <style lang="scss" scoped>
   .notes {
-    max-height: calc(100vh - 175px);
+    max-height: calc(100vh - 210px);
     overflow: scroll;
     -ms-overflow-style: none;  // IE 10+
     scrollbar-width: none;  // Firefox

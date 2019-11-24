@@ -22,7 +22,7 @@
             <mat-list-item @click="() => onClickNote()">
               Edit
             </mat-list-item>
-            <mat-list-item @click="$emit('delete', note)">
+            <mat-list-item @click="deleteNote">
               Delete
             </mat-list-item>
           </mat-list>
@@ -45,6 +45,11 @@ export default class NoteComponent extends Vue {
   note: CreateNoteInput;
 
   menu = false;
+
+  deleteNote() {
+    this.menu = false;
+    this.$emit('delete', this.note);
+  }
 
   onClickNote() {
     this.menu = false;

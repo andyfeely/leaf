@@ -6,6 +6,8 @@
     <mat-card
       padding="15px"
       round="2"
+      :color="editingNote.color || '#ffffff'"
+      :gradient="editingNote.gradient"
     >
       <div class="edit-note-inner">
         <div>
@@ -130,10 +132,12 @@ export default class EditNote extends Vue {
       height: 100%;
     }
     .ck-editor {
+      color: #333;
       flex: 1;
       display: flex;
       flex-direction: column;
       height: 100%;
+      width: 700px;
       &__main {
         flex: 1;
       }
