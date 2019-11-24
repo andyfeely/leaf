@@ -81,6 +81,7 @@ import { components } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify';
 // @ts-ignore
 import transitions from '@materiajs/vue-materia/src/utils/transitions';
+import theme from '@materiajs/theme';
 import CreateBookmark from '@/components/CreateBookmark.vue';
 import { listBookmarks } from '../graphql/queries';
 import { onCreateBookmark, onDeleteBookmark } from '@/graphql/subscriptions';
@@ -116,6 +117,7 @@ export default class Bookmarks extends Vue {
   transitions = transitions;
 
   created() {
+    theme.setTheme(theme.themes.palette2);
     Auth.currentAuthenticatedUser()
       .then((data: any) => {
         this.owner = data.username;

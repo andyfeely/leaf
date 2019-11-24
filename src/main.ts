@@ -43,7 +43,7 @@ Amplify.configure(configUpdate);
 
 Vue.use(AmplifyPlugin, AmplifyModules);
 Vue.use(VueMateria, {
-  theme: 'palette2',
+  theme: 'palette1',
 });
 const apolloConfig = {
   url: config.aws_appsync_graphqlEndpoint,

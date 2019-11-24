@@ -65,6 +65,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import gql from 'graphql-tag';
 // @ts-ignore
 // eslint-disable-next-line
+import theme from '@materiajs/theme';
 import { components } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify';
 // @ts-ignore
@@ -105,6 +106,7 @@ export default class Notes extends Vue {
   searchString = '';
 
   created() {
+    theme.setTheme(theme.themes.palette1);
     Auth.currentAuthenticatedUser()
       .then((data: any) => {
         this.owner = data.username;
