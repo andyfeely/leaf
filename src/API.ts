@@ -17,6 +17,32 @@ export type DeleteBookmarkInput = {
   id?: string | null,
 };
 
+export type CreateNoteInput = {
+  id?: string | null,
+  title: string,
+  body: string,
+  starred?: boolean | null,
+  createdAt: string,
+  updatedAt: string,
+  color?: string | null,
+  gradient?: string | null,
+};
+
+export type UpdateNoteInput = {
+  id: string,
+  title?: string | null,
+  body?: string | null,
+  starred?: boolean | null,
+  createdAt?: string | null,
+  updatedAt?: string | null,
+  color?: string | null,
+  gradient?: string | null,
+};
+
+export type DeleteNoteInput = {
+  id?: string | null,
+};
+
 export type ModelBookmarkFilterInput = {
   id?: ModelIDFilterInput | null,
   name?: ModelStringFilterInput | null,
@@ -52,13 +78,32 @@ export type ModelStringFilterInput = {
   beginsWith?: string | null,
 };
 
+export type ModelNoteFilterInput = {
+  id?: ModelIDFilterInput | null,
+  title?: ModelStringFilterInput | null,
+  body?: ModelStringFilterInput | null,
+  starred?: ModelBooleanFilterInput | null,
+  createdAt?: ModelStringFilterInput | null,
+  updatedAt?: ModelStringFilterInput | null,
+  color?: ModelStringFilterInput | null,
+  gradient?: ModelStringFilterInput | null,
+  and?: Array< ModelNoteFilterInput | null > | null,
+  or?: Array< ModelNoteFilterInput | null > | null,
+  not?: ModelNoteFilterInput | null,
+};
+
+export type ModelBooleanFilterInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+};
+
 export type CreateBookmarkMutationVariables = {
   input: CreateBookmarkInput,
 };
 
 export type CreateBookmarkMutation = {
-  createBookmark:  {
-    __typename: "Bookmark",
+  createBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
@@ -71,8 +116,8 @@ export type UpdateBookmarkMutationVariables = {
 };
 
 export type UpdateBookmarkMutation = {
-  updateBookmark:  {
-    __typename: "Bookmark",
+  updateBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
@@ -85,11 +130,68 @@ export type DeleteBookmarkMutationVariables = {
 };
 
 export type DeleteBookmarkMutation = {
-  deleteBookmark:  {
-    __typename: "Bookmark",
+  deleteBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
+    owner: string | null,
+  } | null,
+};
+
+export type CreateNoteMutationVariables = {
+  input: CreateNoteInput,
+};
+
+export type CreateNoteMutation = {
+  createNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
+    owner: string | null,
+  } | null,
+};
+
+export type UpdateNoteMutationVariables = {
+  input: UpdateNoteInput,
+};
+
+export type UpdateNoteMutation = {
+  updateNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
+    owner: string | null,
+  } | null,
+};
+
+export type DeleteNoteMutationVariables = {
+  input: DeleteNoteInput,
+};
+
+export type DeleteNoteMutation = {
+  deleteNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
     owner: string | null,
   } | null,
 };
@@ -99,8 +201,8 @@ export type GetBookmarkQueryVariables = {
 };
 
 export type GetBookmarkQuery = {
-  getBookmark:  {
-    __typename: "Bookmark",
+  getBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
@@ -115,13 +217,57 @@ export type ListBookmarksQueryVariables = {
 };
 
 export type ListBookmarksQuery = {
-  listBookmarks:  {
-    __typename: "ModelBookmarkConnection",
-    items:  Array< {
-      __typename: "Bookmark",
+  listBookmarks: {
+    __typename: 'ModelBookmarkConnection',
+    items: Array< {
+      __typename: 'Bookmark',
       id: string,
       name: string,
       url: string,
+      owner: string | null,
+    } | null > | null,
+    nextToken: string | null,
+  } | null,
+};
+
+export type GetNoteQueryVariables = {
+  id: string,
+};
+
+export type GetNoteQuery = {
+  getNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
+    owner: string | null,
+  } | null,
+};
+
+export type ListNotesQueryVariables = {
+  filter?: ModelNoteFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListNotesQuery = {
+  listNotes: {
+    __typename: 'ModelNoteConnection',
+    items: Array< {
+      __typename: 'Note',
+      id: string,
+      title: string,
+      body: string,
+      starred: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      color: string | null,
+      gradient: string | null,
       owner: string | null,
     } | null > | null,
     nextToken: string | null,
@@ -133,8 +279,8 @@ export type OnCreateBookmarkSubscriptionVariables = {
 };
 
 export type OnCreateBookmarkSubscription = {
-  onCreateBookmark:  {
-    __typename: "Bookmark",
+  onCreateBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
@@ -147,8 +293,8 @@ export type OnUpdateBookmarkSubscriptionVariables = {
 };
 
 export type OnUpdateBookmarkSubscription = {
-  onUpdateBookmark:  {
-    __typename: "Bookmark",
+  onUpdateBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
@@ -161,11 +307,68 @@ export type OnDeleteBookmarkSubscriptionVariables = {
 };
 
 export type OnDeleteBookmarkSubscription = {
-  onDeleteBookmark:  {
-    __typename: "Bookmark",
+  onDeleteBookmark: {
+    __typename: 'Bookmark',
     id: string,
     name: string,
     url: string,
+    owner: string | null,
+  } | null,
+};
+
+export type OnCreateNoteSubscriptionVariables = {
+  owner: string,
+};
+
+export type OnCreateNoteSubscription = {
+  onCreateNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
+    owner: string | null,
+  } | null,
+};
+
+export type OnUpdateNoteSubscriptionVariables = {
+  owner: string,
+};
+
+export type OnUpdateNoteSubscription = {
+  onUpdateNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
+    owner: string | null,
+  } | null,
+};
+
+export type OnDeleteNoteSubscriptionVariables = {
+  owner: string,
+};
+
+export type OnDeleteNoteSubscription = {
+  onDeleteNote: {
+    __typename: 'Note',
+    id: string,
+    title: string,
+    body: string,
+    starred: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    color: string | null,
+    gradient: string | null,
     owner: string | null,
   } | null,
 };

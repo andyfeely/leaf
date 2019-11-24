@@ -7,3 +7,17 @@ type Bookmark @model @auth(
 	name: String!
 	url: String!
 }
+
+type Note @model @auth(
+	rules: [
+		{allow: owner, operations: [create, update, delete, read]},
+	]) {
+	id: ID!
+	title: String!
+	body: String!
+	starred: Boolean
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+	color: String
+	gradient: String
+}

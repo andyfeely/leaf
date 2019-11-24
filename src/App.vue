@@ -28,10 +28,10 @@
           height="100%"
         >
           <mat-list>
-            <mat-list-item>
+            <mat-list-item @click="$router.push({ name: 'bookmarks' })">
               Bookmarks
             </mat-list-item>
-            <mat-list-item>
+            <mat-list-item @click="$router.push({ name: 'notes' })">
               Notes
             </mat-list-item>
           </mat-list>
@@ -41,9 +41,7 @@
         height="100%"
         width="100%"
       >
-        <mat-container max-width="720px">
-          <router-view/>
-        </mat-container>
+        <router-view/>
       </mat-container>
     </mat-container>
     <clock
@@ -85,7 +83,7 @@ export default class App extends Vue {
       switch (event) {
         case 'signIn':
           this.signedIn = true;
-          this.$router.push('/');
+          this.$router.push({ name: 'bookmarks' });
           break;
         case 'signOut':
           this.signedIn = false;

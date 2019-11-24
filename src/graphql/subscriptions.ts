@@ -28,3 +28,45 @@ export const onDeleteBookmark = `subscription OnDeleteBookmark($owner: String!) 
   }
 }
 `;
+export const onCreateNote = `subscription OnCreateNote($owner: String!) {
+  onCreateNote(owner: $owner) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;
+export const onUpdateNote = `subscription OnUpdateNote($owner: String!) {
+  onUpdateNote(owner: $owner) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;
+export const onDeleteNote = `subscription OnDeleteNote($owner: String!) {
+  onDeleteNote(owner: $owner) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;

@@ -31,26 +31,35 @@
       </div>
       <br>
       <mat-list>
-        <template v-for="(bookmark, idx) in bookmarks">
+        <transition-group
+          appear
+          name="flip-list"
+          v-on="transitions.downUp"
+        >
           <div
-            v-if="idx === 0 || bookmarks[idx - 1].hostname !== bookmark.hostname"
+            v-for="(bookmark, idx) in bookmarks"
             :key="bookmark.id"
-            class="hostname"
           >
-            <img :src="`https://s2.googleusercontent.com/s2/favicons?domain_url=${bookmark.hostname}`">
-            <div>
-              {{ bookmark.hostname }}
+            <div
+              v-if="idx === 0 || bookmarks[idx - 1].hostname !== bookmark.hostname"
+              :key="bookmark.id"
+              class="hostname"
+            >
+              <img :src="`https://s2.googleusercontent.com/s2/favicons?domain_url=${bookmark.hostname}`">
+              <div>
+                {{ bookmark.hostname }}
+              </div>
+              <div class="line-break"></div>
             </div>
-            <div class="line-break"></div>
+            <mat-list-item :key="bookmark.id">
+              <bookmark
+                :bookmark="bookmark"
+                @delete="deleteBookmark"
+                @edit="() => onEditBookmark(bookmark)"
+              />
+            </mat-list-item>
           </div>
-          <mat-list-item :key="bookmark.id">
-            <bookmark
-              :bookmark="bookmark"
-              @delete="deleteBookmark"
-              @edit="() => onEditBookmark(bookmark)"
-            />
-          </mat-list-item>
-        </template>
+        </transition-group>
       </mat-list>
     </mat-container>
   </div>
@@ -62,6 +71,8 @@ import gql from 'graphql-tag';
 // @ts-ignore
 import { components } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify';
+// @ts-ignore
+import transitions from '@materiajs/vue-materia/src/utils/transitions';
 import CreateBookmark from '@/components/CreateBookmark.vue';
 import { listBookmarks } from '../graphql/queries';
 import { onCreateBookmark, onDeleteBookmark } from '@/graphql/subscriptions';
@@ -93,6 +104,8 @@ export default class Bookmarks extends Vue {
   editingBookmark = null;
 
   searchString = '';
+
+  transitions = transitions;
 
   created() {
     Auth.currentAuthenticatedUser()
@@ -257,6 +270,9 @@ export default class Bookmarks extends Vue {
 
 <style lang="scss" scoped>
   .home {
+    .flip-list-move {
+      transition: transform .4s;
+    }
     .hostname {
       color: #ffffffaa;
       font-size: 0.8em;

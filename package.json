@@ -9,7 +9,10 @@
     "latest": "npm i -S @materiajs/vue-materia"
   },
   "dependencies": {
-    "@materiajs/vue-materia": "^0.1.30",
+    "@ckeditor/ckeditor5-build-classic": "^15.0.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.0",
+    "@materiajs/theme": "^1.0.8",
+    "@materiajs/vue-materia": "^0.1.37",
     "aws-amplify": "^1.2.4",
     "aws-amplify-vue": "^0.3.3",
     "aws-appsync": "^3.0.2",

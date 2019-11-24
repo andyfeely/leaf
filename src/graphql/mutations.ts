@@ -28,3 +28,45 @@ export const deleteBookmark = `mutation DeleteBookmark($input: DeleteBookmarkInp
   }
 }
 `;
+export const createNote = `mutation CreateNote($input: CreateNoteInput!) {
+  createNote(input: $input) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;
+export const updateNote = `mutation UpdateNote($input: UpdateNoteInput!) {
+  updateNote(input: $input) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;
+export const deleteNote = `mutation DeleteNote($input: DeleteNoteInput!) {
+  deleteNote(input: $input) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;

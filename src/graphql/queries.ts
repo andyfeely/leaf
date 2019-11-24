@@ -26,3 +26,38 @@ export const listBookmarks = `query ListBookmarks(
   }
 }
 `;
+export const getNote = `query GetNote($id: ID!) {
+  getNote(id: $id) {
+    id
+    title
+    body
+    starred
+    createdAt
+    updatedAt
+    color
+    gradient
+    owner
+  }
+}
+`;
+export const listNotes = `query ListNotes(
+  $filter: ModelNoteFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listNotes(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      body
+      starred
+      createdAt
+      updatedAt
+      color
+      gradient
+      owner
+    }
+    nextToken
+  }
+}
+`;

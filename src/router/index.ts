@@ -6,10 +6,16 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/bookmarks',
     name: 'bookmarks',
     meta: { requiresAuth: true },
     component: Bookmarks,
+  },
+  {
+    path: '/notes',
+    name: 'notes',
+    meta: { requiresAuth: true },
+    component: () => import(/* webpackChunkName: "notes" */ '../views/Notes.vue'),
   },
   {
     path: '/auth',

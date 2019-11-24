@@ -26,7 +26,6 @@
 
 <script>
 import { components } from 'aws-amplify-vue';
-import gql from 'graphql-tag';
 import { createBookmark } from '@/graphql/mutations';
 
 export default {
