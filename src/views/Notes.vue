@@ -63,9 +63,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import gql from 'graphql-tag';
-// @ts-ignore
-// eslint-disable-next-line
 import theme from '@materiajs/theme';
+// @ts-ignore
 // eslint-disable-next-line
 import { components } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify';
