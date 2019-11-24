@@ -66,6 +66,7 @@ import gql from 'graphql-tag';
 // @ts-ignore
 // eslint-disable-next-line
 import theme from '@materiajs/theme';
+// eslint-disable-next-line
 import { components } from 'aws-amplify-vue';
 import { Auth } from 'aws-amplify';
 // @ts-ignore
