@@ -1,6 +1,7 @@
 <template>
   <mat-container height="100%" display="flex">
     <mat-container
+      padding="0 15px"
       flex="1">
       <mat-container
         max-width="700px"
