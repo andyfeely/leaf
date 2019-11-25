@@ -177,6 +177,7 @@ export default class Notes extends Vue {
   }
 
   get mobile() {
+    // @ts-ignore
     return ['xs', 'sm', 'md'].includes(this.$mq);
   }
 
