@@ -16,12 +16,11 @@
           <mat-container
             :max-width="showCreate ? 'calc(50vw - 30px)' : '800px'"
             min-width="700px"
-            margin="auto"
             padding="0 15px"
             display="flex"
             justify-content="center"
           >
-            <mat-container>
+            <mat-container width="100%">
               <mat-toolbar>
                 <h4>
                   Notes
