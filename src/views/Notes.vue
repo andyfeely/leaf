@@ -1,64 +1,82 @@
 <template>
-  <mat-container height="100%" display="flex">
+  <div class="notes-wrapper">
     <mat-container
-      padding="0 15px"
-      flex="1">
+      width="100%"
+      height="100%"
+      display="flex"
+      justify-content="center"
+    >
       <mat-container
-        max-width="700px"
-        margin="auto"
+        display="flex"
+        justify-content="center"
+        flex="1"
       >
-        <mat-toolbar>
-          <h4>
-            Notes
-          </h4>
-          <mat-button
-            @click="onClickNew"
-            color="light-blue-2"
+        <mat-expansion
+          :value="!mobile || !showCreate">
+          <mat-container
+            :max-width="showCreate ? 'calc(50vw - 30px)' : '800px'"
+            min-width="700px"
+            margin="auto"
+            padding="0 15px"
+            display="flex"
+            justify-content="center"
           >
-            New
-          </mat-button>
-        </mat-toolbar>
-        <mat-input
-          v-model="searchString"
-          placeholder="Search notes"
-        />
-        <br>
-        <div
-          class="notes mat-scrollbar-hidden"
+            <mat-container>
+              <mat-toolbar>
+                <h4>
+                  Notes
+                </h4>
+                <mat-button
+                  @click="onClickNew"
+                  color="light-blue-2"
+                >
+                  New
+                </mat-button>
+              </mat-toolbar>
+              <mat-input
+                v-model="searchString"
+                placeholder="Search notes"
+              />
+              <br>
+              <div
+                class="notes mat-scrollbar-hidden"
+              >
+                <transition-group
+                  appear
+                  name="list-completez"
+                  v-on="transitions.downUp"
+                >
+                  <NoteComponent
+                    v-for="(note) in notes"
+                    :key="note.id"
+                    :note="note"
+                    @click="onClickNote"
+                    @delete="deleteNote"
+                    :ref="`note-${note.id}`"
+                  />
+                </transition-group>
+              </div>
+            </mat-container>
+          </mat-container>
+        </mat-expansion>
+      </mat-container>
+      <mat-expansion
+        v-model="showCreate"
+        direction="left">
+        <mat-container
+          padding="15px 30px"
+          :min-width="editWidth"
+          margin="0 auto"
         >
-          <transition-group
-            appear
-            name="list-completez"
-            v-on="transitions.downUp"
-          >
-            <NoteComponent
-              v-for="(note) in notes"
-              :key="note.id"
-              :note="note"
-              @click="onClickNote"
-              @delete="deleteNote"
-              :ref="`note-${note.id}`"
-            />
-          </transition-group>
-        </div>
-      </mat-container>
+          <edit-note
+            @saveNote="saveNote"
+            @cancel="onCloseEdit"
+            :note="editingNote || undefined"
+          />
+        </mat-container>
+      </mat-expansion>
     </mat-container>
-    <mat-expansion
-      v-model="showCreate"
-      direction="left">
-      <mat-container
-        padding="15px 30px"
-        :min-width="editWidth"
-        margin="0 auto"
-      >
-        <edit-note
-          @saveNote="saveNote"
-          @cancel="onCloseEdit"
-          :note="editingNote || undefined"
-        />
-      </mat-container>
-    </mat-expansion>
-  </mat-container>
+  </div>
 </template>
 
 <script lang="ts">
@@ -155,7 +173,11 @@ export default class Notes extends Vue {
   // @ts-ignore
   // eslint-disable-next-line
   get editWidth() {
-    return `${window.innerWidth / 2}px`;
+    return this.mobile ? 'calc(100vw - 60px)' : 'calc(50vw - 60px)';
+  }
+
+  get mobile() {
+    return ['xs', 'sm', 'md'].includes(this.$mq);
   }
 
   get notes(): UpdateNoteInput[] {
@@ -278,7 +300,7 @@ export default class Notes extends Vue {
 
 <style lang="scss" scoped>
   .notes {
-    max-height: calc(100vh - 210px);
+    max-height: calc(100vh - 240px);
     overflow: scroll;
     -ms-overflow-style: none;  // IE 10+
     scrollbar-width: none;  // Firefox
