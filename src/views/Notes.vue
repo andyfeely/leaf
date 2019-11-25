@@ -107,7 +107,7 @@ export default class Notes extends Vue {
   searchString = '';
 
   created() {
-    theme.setTheme(theme.themes.palette1);
+    theme.setTheme(theme.themes.palette7);
     Auth.currentAuthenticatedUser()
       .then((data: any) => {
         this.owner = data.username;

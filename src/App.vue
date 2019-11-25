@@ -3,7 +3,7 @@
     <mat-toolbar
       :no-padding="true"
       z-index="5"
-      color="primary"
+      color="primary-2"
       size="lg"
     >
       <mat-nav-link @click="() => sidebar = !sidebar">
@@ -17,8 +17,8 @@
       </mat-nav-link>
     </mat-toolbar>
     <mat-container
-      color="primary"
-      gradient="primary-2"
+      color="primary-2"
+      gradient="primary"
       height="100%"
       width="100%"
       display="flex">

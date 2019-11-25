@@ -22,6 +22,12 @@ const routes = [
     name: 'auth',
     component: () => import(/* webpackChunkName: "auth" */ '../views/Auth.vue'),
   },
+  {
+    path: '/',
+    redirect: {
+      name: 'notes',
+    },
+  },
 ];
 
 const router = new VueRouter({
